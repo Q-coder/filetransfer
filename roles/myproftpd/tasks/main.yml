@@ -1,0 +1,24 @@
+---
+- name: check structure of file-transfer group_vars
+  debug:
+    msg: |
+      " {{ item.home }} "
+      " {{ item.sshkey }} "
+      " {{ item.username }} "
+  loop: "{{ secure_users }}"
+
+- name: check structure of file-transfer group_vars none secure
+  debug:
+    msg: |
+       {{ item.home }}
+       {{ item.passwd }}
+       {{ item.username }}
+  loop: "{{ none_secure_users }}"
+
+- name: check structure of file-transfer group_vars none secure's processes
+  debug:
+    msg: |
+       " {{ item.1.binary }} "
+  loop: "{{ none_secure_users | subelements('process') }}"
+  loop_control:
+    label: "{{ item.0.username }}"

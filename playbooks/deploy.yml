@@ -1,0 +1,13 @@
+- hosts: "{{ targets }}"
+  gather_facts: no
+  become: yes
+
+  vars:
+   ansible_os_family: redhat
+   proftpd_options:
+     - User: nobody
+     - Group: nobody
+
+  roles:
+#    - install_base
+    - myproftpd

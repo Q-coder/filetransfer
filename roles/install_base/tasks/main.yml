@@ -1,0 +1,6 @@
+---
+- name: Install the PROFTPD package
+  ansible.builtin.yum:
+    name: proftpd
+    state: present
+

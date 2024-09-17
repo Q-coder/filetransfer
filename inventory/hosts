@@ -1,0 +1,7 @@
+[mq-servers]
+t-mqhub1.md80.ch
+t-mqhub2.md80.ch
+t-mqhub3.md80.ch
+[file-transfer]
+tace01.md80.ch
+

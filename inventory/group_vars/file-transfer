@@ -1,0 +1,26 @@
+---
+secure_users:
+  - username: srv-test-1
+    sshkey: mykey1
+    home: /var/ftp/srv-test-1
+  - username: srv-test-2
+    sshkey: mykey2
+    home: /var/ftp/srv-test-2
+none_secure_users:
+  - username: srv-test-no-1
+    passwd: mypass1
+    home: /var/ftp/srv-test-no-1
+    process:
+      - binary: /var/ftp/bin/tam_transfer
+        source: /var/ftp/srv-test-no-1/inbound/
+        target: /bookings
+  - username: srv-test-no-2
+    passwd: mypass2
+    home: /var/ftp/srv-test-no-2
+    process: 
+      - binary: /var/ftp/bin/sam_transfer
+        source: /var/ftp/srv-test-no-2/inbound
+        target: /payments
+      - binary: /var/ftp/bin/lam_transfer
+        source: /var/ftp/srv-test-no-2/inbound
+        target: /payments
